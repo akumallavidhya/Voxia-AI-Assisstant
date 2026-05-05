@@ -1,7 +1,7 @@
-Flask
 requests
-pyautogui
+# pyautogui
 feedparser
-screen-brightness-control
+# screen-brightness-control
 deep-translator
 beautifulsoup4
+python-dotenv

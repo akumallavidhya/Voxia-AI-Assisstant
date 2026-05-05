@@ -5,18 +5,17 @@ import socket
 import requests
 import os
 from dotenv import load_dotenv
-import pyautogui
 import feedparser
-import screen_brightness_control as sbc
 from deep_translator import GoogleTranslator
 import sqlite3
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 app.secret_key = "voxia_secret"
+
+# LOAD ENV
 load_dotenv()
 HF_TOKEN = os.getenv("HF_TOKEN")
-
 
 # ---------------- DATABASE ----------------
 
@@ -129,8 +128,8 @@ def logout():
 
 @app.route("/ask", methods=["POST"])
 def ask():
-
     data = request.get_json()
+
     if not data or "message" not in data:
         return jsonify({"reply": "Invalid request"})
 
@@ -138,7 +137,7 @@ def ask():
 
     response = process_command(command)
 
-    # save history
+    # SAVE HISTORY
     if "user" in session:
         conn = get_db()
         c = conn.cursor()
@@ -148,7 +147,7 @@ def ask():
 
     return jsonify({"reply": response})
 
-# ---------------- AI FUNCTION (SAFE) ----------------
+# ---------------- AI FUNCTION ----------------
 
 def ask_ai(prompt):
     try:
@@ -199,7 +198,6 @@ def generate_code(command):
 
     if "even number" in command:
         return """Python Code:
-
 for i in range(1, 51):
     if i % 2 == 0:
         print(i)
@@ -207,7 +205,6 @@ for i in range(1, 51):
 
     elif "factorial" in command:
         return """Python Code:
-
 def factorial(n):
     if n == 0:
         return 1
@@ -218,7 +215,6 @@ print(factorial(5))
 
     elif "prime" in command:
         return """Python Code:
-
 num = 7
 if num > 1:
     for i in range(2, num):
@@ -237,8 +233,7 @@ def process_command(command):
 
     try:
 
-        # ---------- BASIC ----------
-
+        # BASIC
         if "open google" in command:
             webbrowser.open("https://google.com")
             return "Opening Google"
@@ -262,8 +257,7 @@ def process_command(command):
             feed = feedparser.parse("https://news.google.com/rss")
             return "\n".join([e.title for e in feed.entries[:5]])
 
-        # ---------- TRANSLATE ----------
-
+        # TRANSLATE
         elif "translate" in command:
             parts = command.replace("translate", "").split("to")
 
@@ -275,36 +269,23 @@ def process_command(command):
 
             return GoogleTranslator(source='auto', target=lang).translate(text)
 
-        # ---------- SYSTEM ----------
-
-        elif "increase volume" in command:
-            pyautogui.press("volumeup")
-            return "Volume increased"
-
-        elif "decrease volume" in command:
-            pyautogui.press("volumedown")
-            return "Volume decreased"
-
-        # ---------- CODE ----------
-
+        # CODE
         code = generate_code(command)
         if code:
             return code
 
-        # ---------- AI ----------
-
+        # AI
         ai = ask_ai(command)
         if ai:
             return ai
 
-        # ---------- GOOGLE FALLBACK ----------
-
+        # GOOGLE FALLBACK
         return google_search(command)
 
     except Exception as e:
         return f"Error: {str(e)}"
 
-# ---------------- RUN ----------------
+# ---------------- RUN (DEPLOY SAFE) ----------------
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)

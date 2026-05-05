@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Voxia Dashboard</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- LEFT PANEL -->
+
+<div class="history-panel">
+
+<h3>Search History</h3>
+
+<ul id="historyList">
+{% for item in history %}
+<li>{{ item[0] }}</li>
+{% endfor %}
+</ul>
+
+</div>
+
+
+
+<!-- CENTER PANEL -->
+
+<div class="chat-panel">
+
+<h2>Voxia AI Assistant</h2>
+
+<div id="chatBox" class="chat-box"></div>
+
+<div class="input-area">
+
+<input id="textInput" placeholder="Type a command...">
+
+<button onclick="sendMessage()">Send</button>
+
+<button onclick="startVoice()">🎤 Start Voice</button>
+<button onclick="stopVoice()">🛑 Stop</button>
+
+<p id="voiceStatus" class="voice-status">Voice: Idle</p>
+
+</div>
+
+</div>
+
+
+
+<!-- RIGHT PANEL -->
+
+<div class="commands-panel">
+
+<h3>Try Commands</h3>
+
+<ul>
+
+<li>Open Google</li>
+<li>Open YouTube</li>
+<li>Search Google for AI tools</li>
+<li>Search YouTube for Python tutorial</li>
+<li>Translate hello to french</li>
+<li>Show news</li>
+<li>Show weather</li>
+<li>Check wifi connection</li>
+<li>Increase brightness</li>
+<li>Decrease brightness</li>
+<li>Increase volume</li>
+<li>Decrease volume</li>
+<li>Mute volume</li>
+<li>Open Chrome</li>
+<li>Open VS Code</li>
+<li>Take screenshot</li>
+<li>Shutdown computer</li>
+<li>Restart computer</li>
+<li>Python code for binary search</li>
+
+</ul>
+
+<a href="/logout" class="logout">Logout</a>
+
+</div>
+
+</div>
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+
+</body>
+
+</html>

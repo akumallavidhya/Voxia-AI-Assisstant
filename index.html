@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Voxia - Virtual Voice AI Assistant</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+<h2 class="logo">Voxia</h2>
+
+<ul>
+<li>Home</li>
+<li>Features</li>
+<li>About</li>
+<li><button class="try-btn" onclick="window.location.href='/signup'">Try Now</button></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h4>MEET VOXIA</h4>
+
+<h1>YOUR PERSONAL VIRTUAL VOICE AI ASSISTANT</h1>
+
+<p>
+Experience intelligent and human-like AI conversations to simplify your daily tasks.
+</p>
+
+<button class="start-btn" onclick="window.location.href='/signup'">Get Started</button>
+
+</div>
+
+</section>
+
+
+<section class="features">
+
+<h2>Why Choose Voxia?</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Smart Conversations</h3>
+<p>Voxia understands and responds naturally.</p>
+</div>
+
+<div class="card">
+<h3>Task Automation</h3>
+<p>Schedule meetings and reminders.</p>
+</div>
+
+<div class="card">
+<h3>Multi-Language Support</h3>
+<p>Communicate in multiple languages.</p>
+</div>
+
+<div class="card">
+<h3>AI-Powered Insights</h3>
+<p>Get data insights and analytics.</p>
+</div>
+
+<div class="card">
+<h3>Seamless Integration</h3>
+<p>Connect with your favorite apps.</p>
+</div>
+
+<div class="card">
+<h3>Enhanced Security</h3>
+<p>End-to-end encrypted system.</p>
+</div>
+
+<div class="card">
+<h3>24/7 Availability</h3>
+<p>Always ready to assist.</p>
+</div>
+
+<div class="card">
+<h3>Customizable Experience</h3>
+<p>Personalized responses.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="about">
+
+<h2>About Voxia</h2>
+
+<p>
+Voxia is an advanced AI-powered voice assistant designed to revolutionize communication. 
+With natural speech recognition and powerful AI, it enhances productivity and engagement.
+</p>
+
+</section>
+
+
+<section class="key">
+
+<h2>KEY FEATURES</h2>
+
+<ul>
+
+<li>✔ Smart Voice Recognition</li>
+<li>✔ Real-Time Translations</li>
+<li>✔ Task Automation & Scheduling</li>
+<li>✔ Multi Device Synchronization</li>
+<li>✔ Privacy-First AI</li>
+
+</ul>
+
+<button class="learn-btn">Learn More</button>
+
+</section>
+
+
+<section class="contact">
+
+<h2>Contact Us</h2>
+
+<div class="contact-container">
+
+<form action="/contact" method="POST">
+
+<input type="text" name="name" placeholder="Your Name">
+
+<input type="email" name="email" placeholder="Your Email">
+
+<textarea name="message" placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+
+<div class="info">
+
+<h3>Get in Touch</h3>
+
+<p>123 AI Street, Tech City</p>
+<p>+1 234 567 890</p>
+<p>support@voxia.com</p>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<!-- Quick Links -->
+
+<div class="footer-section">
+
+<h3>Quick Links</h3>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact Us</a></li>
+<li><a href="/login">Try Now</a></li>
+</ul>
+
+</div>
+
+
+<!-- Follow Us -->
+
+<div class="footer-section">
+
+<h3>Follow Us</h3>
+
+<div class="social-icons">
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-facebook"></i></a>
+
+<a href="#"><i class="fab fa-twitter"></i></a>
+
+<a href="#"><i class="fab fa-linkedin"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<p>© 2025 Voxia AI Assistant. All Rights Reserved.</p>
+
+</div>
+
+</footer>
+</html>

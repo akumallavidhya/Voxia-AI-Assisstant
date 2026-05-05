@@ -1,0 +1,7 @@
+Flask
+requests
+pyautogui
+feedparser
+screen-brightness-control
+deep-translator
+beautifulsoup4

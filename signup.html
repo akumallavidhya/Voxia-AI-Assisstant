@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Signup - Voxia</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="auth">
+
+<div class="auth-card">
+
+<h1 class="logo">Voxia</h1>
+<p class="tagline">Create your AI assistant account</p>
+
+{% if error %}
+<p class="error-msg">{{ error }}</p>
+{% endif %}
+
+<form method="POST" action="{{ url_for('signup') }}">
+
+<div class="input-group">
+<input type="email" name="email" required>
+<label>Email</label>
+</div>
+
+<div class="input-group">
+<input type="password" name="password" required minlength="4">
+<label>Password</label>
+</div>
+
+<button type="submit">Signup</button>
+
+</form>
+
+<p class="switch">
+Already have an account?
+<a href="{{ url_for('login') }}">Login</a>
+</p>
+
+<p class="switch">
+<a href="{{ url_for('home') }}">← Back to Home</a>
+</p>
+
+</div>
+
+</body>
+<script>
+document.querySelector("form").addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && document.activeElement.tagName !== "BUTTON") {
+        e.preventDefault();
+    }
+});
+</script>
+</html>
